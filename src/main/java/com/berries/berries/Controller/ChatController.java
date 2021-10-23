@@ -21,7 +21,7 @@ public class ChatController {
     @MessageMapping("/chat")
     public void processMessage(@Payload ChatMessageDTO chatMessageDTO) {
         var chatId = chatRoomService
-                .getChatId(chatMessageDTO.getSenderId(), chatMessageDTO.getRecipientId(), true);
+                .getChatId(chatMessageDTO.getSenderId(), chatMessageDTO.getRecipientId());
         chatMessageDTO.setChatId(chatId.get());
 
         ChatMessageDTO saved = chatMessageService.save(chatMessageDTO);

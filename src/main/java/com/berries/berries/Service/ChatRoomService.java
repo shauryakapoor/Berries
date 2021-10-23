@@ -10,15 +10,10 @@ import java.util.Optional;
 public class ChatRoomService {
     ChatRoomRepository chatRoomRepository;
 
-    public Optional<String> getChatId(String senderId, String recipientId, boolean createIfNotExist) {
+    public Optional<String> getChatId(String senderId, String recipientId) {
         Optional<ChatRoomEntity> optionalChatRoomEntity =
                 chatRoomRepository.findBySenderIdAndRecipientId(senderId, recipientId);
 
-        Optional<String> chatId = optionalChatRoomEntity.map(ChatRoomEntity::getChatId)
-                .or(this::createChatRoom);
-    }
-
-    private Optional<String> createChatRoom() {
-        return Optional.of("");
+        return optionalChatRoomEntity.map(ChatRoomEntity::getChatId);
     }
 }

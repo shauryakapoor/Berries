@@ -1,13 +1,12 @@
-package com.berries.berries.DTO;
+package com.berries.berries.Entity;
 
 import com.berries.berries.Enum.MessageStatus;
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-@Data
-public class ChatMessageDTO {
+public class ChatMessageEntity {
+    @Id
     private String id;
     private String chatId;
     private String senderId;
